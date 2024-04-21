@@ -1,0 +1,13 @@
+GET http://localhost:3001/api/contacts/2
+
+###
+POST http://localhost:3001/api/contacts/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "nilay",
+    "number": "8080981701"
+}
+
+###
+DELETE http://localhost:3001/api/contacts/43

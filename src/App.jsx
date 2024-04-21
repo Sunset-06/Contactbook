@@ -2,17 +2,12 @@ import { useState,useEffect } from 'react'
 
 import Book from "./Book.jsx"
 import Form from "./Form.jsx"
-//import Filter from "./Filter.jsx"
+import "./App.css"
 import back from "./back.js"
 
 const App = () => {
   const [search, setSearch] = useState("")
-  const [persons, setPersons] = useState([
-    { name: 'Arto Hellas', number: '040-123456', id: 1 },
-    { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
-    { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
-    { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
-  ]) 
+  const [persons, setPersons] = useState([]) 
 
   useEffect(() => {
    back 
@@ -46,7 +41,7 @@ const App = () => {
     back
       .newContact(newContact)
       .then(response => {
-        setPersons(response.data)
+        setPersons([...persons, response.data]);
       })
   }
 
@@ -54,18 +49,29 @@ const App = () => {
    person.name.toLowerCase().includes(search.toLowerCase()))
 
   return (
-    <div>
-      <h2>Phonebook</h2>
-      <div>
+    <>
+      <div className='main'>
+          <div className='header'>
+            <h1>Phonebook</h1>
+          </div>
+          <div className='add'>
+            <h2>Add New</h2>
+            <Form handler={handleSubmit} />
+          </div>
+          <div className='socials'>
+            <h2>Socials</h2>
+          </div>     
+
+          <div className='search'>
             <form>
-                Search: <input type="text" name="search"  onChange={(e) => setSearch(e.target.value)} />
+                <input type="text" name="search" placeholder='Search for a contact' onChange={(e) => setSearch(e.target.value)} />
             </form>
+          </div>
+          <div className='contacts'>
+            <Book people={filteredContacts} />
+          </div>
         </div>
-      <h2>Add New</h2>
-        <Form handler={handleSubmit} />
-      <h2>Numbers</h2>
-        <Book people={filteredContacts} />
-    </div>
+    </>
   )
 }
 
