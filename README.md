@@ -1,8 +1,22 @@
-# React + Vite
+# 📒 A little Contact book project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I'm making this as I go about learning React and Express for building webapps.
 
-Currently, two official plugins are available:
+The frontend needs a lot of work done, but it's functional as it is right now.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+If you want to run it on dev server, run these commands in the root directory (assuming you have npm installed):
+
+```
+npm install
+npm run dev
+```
+
+---
+## ✨:Things still left to do ✨:
+- [X] Build a backend
+- [X] Integrate frontend and backend
+- [ ] Deploy
+- [ ] Integrate a database
+- [ ] Work on the Styling 
