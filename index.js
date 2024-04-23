@@ -4,6 +4,7 @@ const cors= require('cors')
 const app = express()
 
 app.use(express.json())
+app.use(express.static('dist'))
 app.use(morgan('common'))
 app.use(cors())
 
@@ -38,7 +39,7 @@ const generateId = () => {
 }
 
 app.get('/', (request, response) => {
-    response.send('<h1>Hello World!</h1><p>You may be looking for /api/notes</p>')
+    response.send('<h1>Hello World!</h1><p>You may be looking for /api/contacts</p>')
 })
 
 app.get('/api/contacts', (request, response) => {
