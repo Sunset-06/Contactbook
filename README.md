@@ -21,6 +21,6 @@ npm run dev
 ## ✨:Things still left to do ✨:
 - [X] Build a backend
 - [X] Integrate frontend and backend
-- [ ] Deploy
+- [X] Deploy
 - [ ] Integrate a database
 - [ ] Work on the Styling 
