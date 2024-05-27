@@ -1,20 +1,15 @@
 import "./App.css"
 
-const Book = ({ people }) => {
+const Book = ({ people, handler }) => {
 
-  const handleDelete=()=>{
-    console.log("Delete to be added");
-  }
-
-
-
-  if(people===undefined)
+  if(!Array.isArray(people))
     return <h2>Error getting Contacts</h2>
 
   else if(people.length===0){
     return (
       <>  
-        <h2>You have no contacts</h2>
+        <h2>You have no contacts :(</h2>
+        <h5>add some friends on the left</h5>
       </>
     );
   }
@@ -24,7 +19,8 @@ const Book = ({ people }) => {
       <ul>
         {people.map(contact =>
           <div key={contact.name} className="person">
-            <p className="name">{contact.name}</p> <p className="number">{contact.number}</p>
+            <p className="name">{contact.name} <span className="number">{contact.number}</span></p>
+            <button onClick={() => handler(contact.id)}><box-icon name='trash'/></button>
           </div>
         )}
       </ul>
