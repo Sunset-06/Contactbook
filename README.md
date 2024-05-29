@@ -22,5 +22,5 @@ npm run dev
 - [X] Build a backend
 - [X] Integrate frontend and backend
 - [X] Deploy
-- [ ] Integrate a database
-- [ ] Work on the Styling 
+- [X] Integrate a database
+- [ ] Error Handling and Linting 
