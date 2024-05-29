@@ -5,9 +5,9 @@ POST http://localhost:3001/api/contacts/ HTTP/1.1
 content-type: application/json
 
 {
-    "name": "john testname",
+    "name": "testname",
     "number": "7767699764"
 }
 
 ###
-DELETE http://localhost:3001/api/contacts
+DELETE http://localhost:3001/api/contacts/664ee6fecbcdb2533a263fc5

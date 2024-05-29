@@ -56,7 +56,7 @@ const App = () => {
     back
       .deleteContact(delId)
       .then(() => {
-        setPersons([...persons, response.data]);
+        setPersons(persons.filter(person => person.id !== delId));
       })
   }
 

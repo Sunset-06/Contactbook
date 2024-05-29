@@ -2,7 +2,8 @@ import axios from "axios"
 const baseUrl = '/api/contacts';
 
 const getContacts = () =>{
-    return axios.get(baseUrl)
+    return axios
+        .get(baseUrl)
 }
 
 const newContact = (newContact) => {
