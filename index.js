@@ -11,7 +11,7 @@ app.use(morgan('common'))
 app.use(cors())
 
 
-app.get('/api', (request, response) => {
+app.get('/api', (request, response, next) => {
     response.send('<h1>Hello There!</h1><p>Go to /api/contacts for a json file with all of your contacts</p>')
 })
 
@@ -21,10 +21,14 @@ app.get('/api/contacts', (request, response) => {
     })
 })
 
-app.get('/api/contacts/:id', (request, response) => {
+app.get('/api/contacts/:id', (request, response, next) => {
   Contact.findById(request.params.id).then(person => {
-    response.json(person)
+    if(person)
+      response.json(person)
+    else
+      response.status(404).end()
   })
+  .catch(error => next(error))
 })
 
 app.delete('/api/contacts/:id', (request, response) => {
@@ -42,15 +46,9 @@ app.delete('/api/contacts/:id', (request, response) => {
     })
 })
 
-app.post('/api/contacts', (request, response) => {
+app.post('/api/contacts', (request, response, next) => {
     const body = request.body
   
-    if (!body.name===undefined || body.number===undefined) {
-      return response.status(400).json({ 
-        error: 'proper information missing' 
-      })
-    }
-
     /* const duplicateContact = Contacts.find(person => person.name === body.name || person.number === body.number);
     if (duplicateContact) {
         return response.status(400).json({
@@ -66,8 +64,22 @@ app.post('/api/contacts', (request, response) => {
     newPerson.save().then(savedPerson => {
       response.json(savedPerson)
     })
+    .catch(error => next(error))
 })
 
+const errorHandler = (error, request, response, next) => {
+  console.error(error.message)
+
+  if (error.name === 'CastError') {
+    return response.status(400).send({ error: 'malformatted id' })
+
+  } else if (error.name === 'ValidationError') {
+    return response.status(400).json({ error: error.message })
+  }
+
+  next(error)
+}
+app.use(errorHandler)
 
 const PORT = process.env.PORT
 app.listen(PORT)

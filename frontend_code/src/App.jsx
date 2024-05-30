@@ -23,6 +23,11 @@ const App = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const name = event.target.name.value;
+
+    if (!name || !number) {
+      alert('Both name and number are required');
+      return;
+    }
     const contactExists = persons.some(person => person.name === name);
     if (contactExists) {
       alert(`${name} is already in your contacts`);
