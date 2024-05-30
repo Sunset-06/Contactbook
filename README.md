@@ -1,12 +1,9 @@
 # 📒 A little Contact book project
 
 I'm making this as I go about learning React and Express for building webapps.
-
-The frontend needs a lot of work done, but it's functional as it is right now.
-
 [Deployed on Render](https://contactbook-o7uy.onrender.com)
 
-(It might take a while to load as Render shuts off the server on downtime)
+(It might take a while to start as Render shuts off the server on downtime)
 
 ---
 
@@ -16,11 +13,10 @@ If you want to run it on dev server, run these commands in the root directory (a
 npm install
 npm run dev
 ```
+The frontend_code directory will have to be built to a production build for the changes to take effect in the dev server.
+
+Simply use ``npm run build`` in the frontend directory, which should output a folder called dist, then transfer this folder to the outer directory.
 
 ---
-## ✨:Things still left to do ✨:
-- [X] Build a backend
-- [X] Integrate frontend and backend
-- [X] Deploy
-- [X] Integrate a database
-- [ ] Error Handling and Linting 
+
+So far this only works with one database, which means that there is a shared pool of public contacts. I plan on adding authentication to it as soon as I figure out how to do so. 
