@@ -11,7 +11,7 @@ app.use(morgan('common'))
 app.use(cors())
 
 
-app.get('/api', (request, response, next) => {
+app.get('/api', (request, response) => {
     response.send('<h1>Hello There!</h1><p>Go to /api/contacts for a json file with all of your contacts</p>')
 })
 
