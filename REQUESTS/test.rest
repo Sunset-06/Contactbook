@@ -11,3 +11,16 @@ content-type: application/json
 
 ###
 DELETE http://localhost:3001/api/contacts/664ee6fecbcdb2533a263fc5
+
+###
+POST http://localhost:3001/api/ HTTP/1.1
+content-type: application/json
+
+{
+  "username": "testuser",
+  "passwordHash": "$2y$10$VZrw8mjXRvx66MkllmJq2Oj/Kc71uCg6SHyKGE03bQn6R64OG5dOa",
+  "contacts": [
+    {
+    }
+  ]
+}

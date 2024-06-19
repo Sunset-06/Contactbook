@@ -2,18 +2,13 @@ const mongoose = require('mongoose')
 
 mongoose.set('strictQuery', false)
 
-const uri = process.env.MONGODB_URI;
-mongoose.connect(uri)
-  .then(result => {
-    console.log('connected to MongoDB')
-  })
-  .catch(error => {
-    console.log('Error connecting to MongoDB:', error.message)  
-})
-
 const personSchema = new mongoose.Schema({
     name: {type: String, required: true},
-    number: {type: String, required: true}
+    number: {type: String, required: true},
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'  
+    }
 })
 
 personSchema.set('toJSON', {

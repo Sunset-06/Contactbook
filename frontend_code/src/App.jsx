@@ -23,7 +23,7 @@ const App = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const name = event.target.name.value;
-
+    const number = event.target.number.value;
     if (!name || !number) {
       alert('Both name and number are required');
       return;
@@ -31,7 +31,8 @@ const App = () => {
     const contactExists = persons.some(person => person.name === name);
     if (contactExists) {
       alert(`${name} is already in your contacts`);
-    } else {
+    } 
+    else {
       addContact(event);
     }
   }
@@ -46,12 +47,14 @@ const App = () => {
     event.preventDefault();
     const inputName = event.target.name.value;
     const inputNumber = event.target.number.value;
-    const newContact = {
+    console.log("inputName :"+ inputName);
+    console.log("inputNumber :"+ inputNumber);
+    const newcontact = {  
       name: inputName,
       number: inputNumber
     };
     back
-      .newContact(newContact)
+      .newContact(newcontact)
       .then(response => {
         setPersons([...persons, response.data]);
       })
